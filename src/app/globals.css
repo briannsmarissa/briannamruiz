@@ -1,36 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #2563EB;
-  --color-primary-foreground: #ffffff;
+  --color-primary: #06B6D4;
+  --color-primary-foreground: #000000;
   
   --color-secondary: #1E293B;
-  --color-secondary-foreground: #ffffff;
+  --color-secondary-foreground: #F8FAFC;
   
-  --color-accent: #0EA5E9;
+  --color-accent: #6366F1;
   --color-accent-foreground: #ffffff;
   
-  --color-background: #F8FAFC;
-  --color-foreground: #0F172A;
+  --color-background: #0A0F1C;
+  --color-foreground: #F8FAFC;
   
-  --color-surface: #FFFFFF;
-  --color-surface-foreground: #0F172A;
+  --color-surface: #111827;
+  --color-surface-foreground: #F8FAFC;
   
-  --color-muted: #F1F5F9;
-  --color-muted-foreground: #475569;
+  --color-muted: #1E293B;
+  --color-muted-foreground: #94A3B8;
   
-  --color-border: #E2E8F0;
+  --color-border: #1E293B;
   
-  --color-card: #FFFFFF;
-  --color-card-foreground: #0F172A;
+  --color-card: #111827;
+  --color-card-foreground: #F8FAFC;
 
-  --color-popover: #FFFFFF;
-  --color-popover-foreground: #0F172A;
+  --color-popover: #111827;
+  --color-popover-foreground: #F8FAFC;
 
   --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
   
-  --color-ring: #2563EB;
+  --color-ring: #06B6D4;
 
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
@@ -80,45 +80,54 @@
 
     --radius: var(--radius-md);
   }
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
-}
-
-@layer base {
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-inter), sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-outfit), sans-serif;
   }
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-surface/60 backdrop-blur-md border border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+  
+  .tech-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+  border: 2px solid var(--color-background); /* Gives it a floating effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
 }
